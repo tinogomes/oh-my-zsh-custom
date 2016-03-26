@@ -6,6 +6,7 @@ function show_processes() {
         ps -ef | grep $*
     fi
 }
+alias psg=show_processes
 
 function pause() {
     echo 'Press [Enter] key to continue...'
@@ -20,5 +21,7 @@ function p80 () {
     fi
 }
 
-alias psg=show_processes
-alias myip='curl -s curlmyip.com'
+function lock() {
+    open -a ScreenSaverEngine
+}
+
