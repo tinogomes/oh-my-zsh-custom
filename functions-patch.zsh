@@ -25,3 +25,6 @@ function lock() {
     open -a ScreenSaverEngine
 }
 
+function md5 () {
+  echo -n $1 | md5sum | cut -d ' ' -f 1 | pbcopy
+}
