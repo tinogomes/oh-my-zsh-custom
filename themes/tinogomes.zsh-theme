@@ -3,7 +3,7 @@
 # This theme shows rvm_prompt and git_prompt or hg_prompt.
 
 # Format:
-# <login>@<host>:<pwd> <rvm_prompt> <git_prompt><hg_prompt>
+# [date time] <login>@<host>:<pwd> <rvm_prompt> <git_prompt><hg_prompt>
 # $ _
 #
 # You can see a screenshot at
@@ -31,5 +31,5 @@ if [[ -s ~/.rvm/scripts/rvm ]] ; then
 fi
 
 PROMPT='
-%{$fg[yellow]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%{$reset_color%}:%{$fg_bold[blue]%}%~%{$reset_color%} '$RVM_PROMPT'$(git_prompt_info)$(prompt_hg_info)
+%{$fg[white]%}[%{$fg[yellow]%}%D %T%{$fg[white]%}]%{$reset_color%} %{$fg[yellow]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%{$reset_color%}:%{$fg[white]%}%~%{$reset_color%} '$RVM_PROMPT'$(git_prompt_info)$(prompt_hg_info)
 %_$(prompt_char) '
