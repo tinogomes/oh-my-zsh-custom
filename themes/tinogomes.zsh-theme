@@ -23,6 +23,11 @@ function prompt_hg_info {
 	echo ""
 }
 
+function prompt_kube_info {
+  kube_ps1 > /dev/null 2>/dev/null && echo " $(kube_ps1)" && return
+  echo ""
+}
+
 #RVM settings
 local RVM_PROMPT=''
 
@@ -30,6 +35,12 @@ if [[ -s ~/.rvm/scripts/rvm ]] ; then
     RVM_PROMPT='%{$fg[cyan]%}$(rvm_prompt_info)%{$reset_color%}'
 fi
 
+date_prompt="%{$fg[white]%}[%{$fg[yellow]%}%D %T%{$fg[white]%}]%{$reset_color%}"
+user_prompt="%{$fg[yellow]%}%n%{$reset_color%}"
+hostname_prompt="%{$fg[cyan]%}%m%{$reset_color%}"
+directory_prompt="%{$fg[white]%}%~%{$reset_color%}"
+
 PROMPT='
-%{$fg[white]%}[%{$fg[yellow]%}%D %T%{$fg[white]%}]%{$reset_color%} %{$fg[yellow]%}%n%{$reset_color%}@%{$fg[cyan]%}%m%{$reset_color%}:%{$fg[white]%}%~%{$reset_color%} '$RVM_PROMPT'$(git_prompt_info)$(prompt_hg_info)
+'$RVM_PROMPT'$(git_prompt_info)$(prompt_hg_info)$(prompt_kube_info)
+$date_prompt $user_prompt@$hostname_prompt:$directory_prompt
 %_$(prompt_char) '
