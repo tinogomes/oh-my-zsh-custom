@@ -30,6 +30,16 @@ function md5 () {
   echo -n $1 | md5sum | cut -d ' ' -f 1 | pbcopy
 }
 
+function open_editor() {
+    if (($# == 0)); then
+        subl .
+    else
+        subl $*
+    fi
+}
+
+alias e=open_editor
+
 export PROJECTS_PATH="$HOME/Projects"
 export CDPATH=.:~:$PROJECTS_PATH
 
