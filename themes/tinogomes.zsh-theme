@@ -18,11 +18,6 @@ function prompt_char {
     if [ $UID -eq 0 ]; then echo "%{$fg[red]%}#%{$reset_color%}"; else echo $; fi
 }
 
-function prompt_hg_info {
-	hg branch >/dev/null 2>/dev/null && echo " %{$fg[green]%}($(hg branch))%{$reset_color%}" && return
-	echo ""
-}
-
 function prompt_kube_info {
   kube_ps1 > /dev/null 2>/dev/null && echo " $(kube_ps1)" && return
   echo ""
@@ -41,6 +36,6 @@ hostname_prompt="%{$fg[cyan]%}%m%{$reset_color%}"
 directory_prompt="%{$fg[white]%}%~%{$reset_color%}"
 
 PROMPT='
-'$RVM_PROMPT'$(git_prompt_info)$(prompt_hg_info)$(prompt_kube_info)
+'$RVM_PROMPT'$(git_prompt_info)$(prompt_kube_info)
 $date_prompt $user_prompt@$hostname_prompt:$directory_prompt
 %_$(prompt_char) '
