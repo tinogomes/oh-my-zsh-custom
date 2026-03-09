@@ -22,10 +22,6 @@ function p80 () {
     fi
 }
 
-function lock() {
-    open -a ScreenSaverEngine
-}
-
 function md5 () {
   echo -n $1 | md5sum | cut -d ' ' -f 1 | pbcopy
 }
@@ -41,7 +37,7 @@ function open_editor() {
 alias e=open_editor
 
 export PROJECTS_PATH="$HOME/Projects"
-export CDPATH=.:~:$PROJECTS_PATH
+export CDPATH=.:$PROJECTS_PATH:./bin:$HOME/bin
 
 # Always create $PROJECTS_PATH directory at HOME
 if [[ ! -d "$PROJECTS_PATH" ]]; then
